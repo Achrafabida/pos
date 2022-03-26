@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  app-prod:
+    container_name: storybook-devFactory-prod
+    profiles: ["prod"]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.prod
+    ports:
+      - 6007:6006
+  app-dev:
+    container_name: storybook-devFactory-dev
+    profiles: ["dev"]
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.dev
+    command: yarn run storybook
+    volumes:
+      - ./:/app:cached
+      - /app/node_modules
+    ports:
+      - 6008:6006

@@ -1,0 +1,18 @@
+
+gitConfig:
+  pull.rebase: "false"
+
+tasks:
+  - init: yarn
+  - command: yarn run start
+    
+ports:
+  - port: 6006
+    visibility: public
+    onOpen: "open-preview"
+
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint
+    - "esbenp.prettier-vscode"
+    - "ms-azuretools.vscode-docker"
